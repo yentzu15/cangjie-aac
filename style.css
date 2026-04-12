@@ -1,0 +1,160 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    touch-action: manipulation;
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    user-select: none;
+}
+
+#app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+.top-bar {
+    display: flex;
+    height: 11vh;
+    background-color: #263238;
+    border-bottom: 2px solid #555;
+}
+
+.sentence {
+    flex: 1;
+    font-size: 5vh;
+    font-weight: bold;
+    padding: 0 4vw;
+    display: flex;
+    align-items: center;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+.caregiver-btn {
+    width: 25vw;
+    background-color: #4caf50;
+    color: white;
+    font-size: 3vh;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+.caregiver-btn:active {
+    background-color: #388e3c;
+}
+
+.candidates-area {
+    display: flex;
+    height: 7vh;
+    align-items: center;
+    padding: 0 4vw;
+    background-color: #1a1a1a;
+}
+
+.typed-radicals {
+    font-size: 4vh;
+    font-weight: bold;
+    color: #ffffff;
+    width: 40%;
+}
+
+.prediction-text {
+    font-size: 3vh;
+    font-weight: bold;
+    color: #81c784;
+    width: 60%;
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.grid-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5vh 2vw;
+    gap: 1vh;
+}
+
+.grid-row {
+    flex: 1;
+    display: flex;
+    gap: 2vw;
+    border: 3px solid transparent; 
+    transition: background-color 0.1s, border-color 0.1s;
+    border-radius: 8px;
+}
+
+/* ★ 明確定義：「外層群組高亮」 -> 讓病患清楚知道這是針對左到右整條的一行 */
+.grid-row.highlight-group {
+    background-color: rgba(255, 255, 0, 0.5); 
+    border-color: #ffeb3b; 
+}
+
+.grid-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5vh;
+    font-weight: bold;
+    border-radius: 6px;
+    background-color: #e0e0e0;
+    color: #333333;
+    border: 3px solid #ccc; /* 預設邊框 */
+    box-shadow: 0 4px #9e9e9e;
+    transition: transform 0.1s;
+}
+
+/* ★ 明確定義：「內層個體高亮」 -> 縮至單顆按鈕的反白 */
+.grid-btn.highlight-item {
+    background-color: #ffff00 !important;
+    color: #000000 !important;
+    border: 3px solid #f57f17 !important;
+    transform: scale(1.08); /* 單格放大凸顯 */
+    box-shadow: 0 6px #fbc02d;
+    z-index: 10;
+}
+
+.grid-btn.flash-success {
+    background-color: #4caf50 !important;
+    color: #ffffff !important;
+    border-color: #2e7d32 !important;
+}
+
+/* 照顧者特化按鍵：藍底候選字 */
+.btn-candidate {
+    background-color: #1976d2;
+    color: #ffffff;
+    box-shadow: 0 4px #1565c0;
+    border-color: #1976d2;
+}
+.btn-candidate.empty {
+    visibility: hidden;
+}
+
+/* 照顧者特化按鍵：底部紅黃功能鍵 */
+.btn-danger {
+    background-color: #ffcdd2;
+    color: #b71c1c;
+    box-shadow: 0 4px #e57373;
+    border-color: #ef9a9a;
+    font-size: 2.8vh; 
+}
+.btn-warning {
+    background-color: #fff9c4;
+    color: #f57f17;
+    box-shadow: 0 4px #fff176;
+    border-color: #fff59d;
+    font-size: 2.8vh;
+}

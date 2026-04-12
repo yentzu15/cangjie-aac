@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>倉頡掃描溝通板 (手機專用最佳化版本)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app-container">
+        <!-- 頂部：完成的句子與播放按鈕 -->
+        <header class="top-bar">
+            <div id="sentence-display" class="sentence"></div>
+            <button id="btn-speak" class="caregiver-btn">🔊<br>發聲</button>
+        </header>
+        
+        <!-- 中間：預測字候選與字根列 -->
+        <section class="candidates-area">
+            <div class="typed-radicals" id="radical-display"></div>
+            <div id="prediction-text" class="prediction-text">預測: </div>
+        </section>
+
+        <!-- 主操作網格：由 JS 動態填入 (含候選區0、字根區1~6、控制區7) -->
+        <main class="grid-container" id="main-grid">
+        </main>
+    </div>
+
+    <!-- 載入本機轉換好的字典庫，與主邏輯檔 -->
+    <script src="cangjie_dict.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
