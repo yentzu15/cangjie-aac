@@ -5,20 +5,25 @@
     touch-action: manipulation;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
 body {
     background-color: #121212;
     color: #ffffff;
     font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
-    height: 100vh;
     width: 100%;
-    overflow: hidden;
     user-select: none;
 }
 
 #app-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
     width: 100vw;
 }
 
@@ -97,8 +102,16 @@ body {
 
 /* ★ 明確定義：「外層群組高亮」 -> 讓病患清楚知道這是針對左到右整條的一行 */
 .grid-row.highlight-group {
-    background-color: rgba(255, 255, 0, 0.5); 
-    border-color: #ffeb3b; 
+    background-color: transparent; 
+    border-color: transparent; 
+}
+
+/* 因應眼震需求，掃描到該行時，裡面四個字根一起強制變成醒目的綠底白字 */
+.grid-row.highlight-group .grid-btn {
+    background-color: #4caf50 !important;
+    color: #ffffff !important;
+    border: 3px solid #2e7d32 !important;
+    transform: scale(1.02); /* 微微放大一點點幫助聚焦 */
 }
 
 .grid-btn {
@@ -113,10 +126,10 @@ body {
     color: #333333;
     border: 3px solid #ccc; /* 預設邊框 */
     box-shadow: 0 4px #9e9e9e;
-    transition: transform 0.1s;
+    transition: transform 0.1s, background-color 0.1s;
 }
 
-/* ★ 明確定義：「內層個體高亮」 -> 縮至單顆按鈕的反白 */
+/* ★ 明確定義：「內層個體高亮」 -> 進入第二層時，單格變成黃色反白 */
 .grid-btn.highlight-item {
     background-color: #ffff00 !important;
     color: #000000 !important;
@@ -126,10 +139,12 @@ body {
     z-index: 10;
 }
 
+/* 按下開關瞬間的成功閃爍特效 (改為白底黑字以免跟綠色掃描撞色) */
 .grid-btn.flash-success {
-    background-color: #4caf50 !important;
-    color: #ffffff !important;
-    border-color: #2e7d32 !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border-color: #ffffff !important;
+    transform: scale(1.1); /* 點擊瞬間膨脹特效 */
 }
 
 /* 照顧者特化按鍵：藍底候選字 */
