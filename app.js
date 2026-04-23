@@ -19,7 +19,7 @@ const LETTER_MAP = {
     "山": "u", "女": "v", "田": "w", "卜": "y"
 };
 
-const SCAN_MS = 3000;
+const SCAN_MS = 5000;
 let state = "GROUP_SCAN"; // GROUP_SCAN (選排) 或 ITEM_SCAN (選字)
 let currentGroupObjIdx = 1; // 自動掃描預設從行 1 開始 (跳過空候選區0)
 let currentItemIdx = 0;
